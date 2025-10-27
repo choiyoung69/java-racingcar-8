@@ -1,7 +1,6 @@
 package racingcar.dto;
 
 public record GameRequestDto(String carNames, int numberOfAttempts) {
-
     public static GameRequestDto from(String carNames, String numberOfAttempts) {
         validateCarNames(carNames);
         int validAttempts = toValidAttempts(numberOfAttempts);
