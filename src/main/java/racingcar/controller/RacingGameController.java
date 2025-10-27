@@ -4,7 +4,6 @@ import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.Game;
 import racingcar.domain.Parser.Parser;
-import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.GameRequestDto;
 import racingcar.view.InputView;
