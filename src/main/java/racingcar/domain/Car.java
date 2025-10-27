@@ -6,6 +6,7 @@ public class Car {
     private MoveStrategy moveStrategy;
 
     private Car(String name, int distance, MoveStrategy moveStrategy){
+        validateCarNameFormat(name);
         this.name = name;
         this.distance = distance;
         this.moveStrategy = moveStrategy;
@@ -17,5 +18,14 @@ public class Car {
 
     public void decideToMove() {
         if(moveStrategy.isAllowedToAdvance()) distance++;
+    }
+
+    private void validateCarNameFormat(String name) {
+        if(name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있으면 안됩니다.");
+        }
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름이 5글자 이상입니다" + name);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isAllowedToAdvance() {
-        return Randoms.pickNumberInRange(RANDOM_START_NUMBER, RANDOM_END_NUMBER) >= MOVE_THRESHOLD;
+        return Randoms.pickNumberInRange(RANDOM_START_NUMBER,
+                RANDOM_END_NUMBER) >= MOVE_THRESHOLD;
     }
 }
