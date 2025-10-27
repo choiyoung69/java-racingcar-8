@@ -12,7 +12,10 @@ import racingcar.view.OutputView;
 
 public class RacingGameController {
     private Parser parser;
-    private MoveStrategy moveStrategy;
+
+    public RacingGameController(Parser parser) {
+        this.parser = parser;
+    }
 
     public void gameStart() {
         GameRequestDto gameRequestDto = InputView.readGameRequest();

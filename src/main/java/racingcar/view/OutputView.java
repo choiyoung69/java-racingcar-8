@@ -22,6 +22,7 @@ public class OutputView {
         for (Car car : cars.getCars()) {
             System.out.println(car.getName() + NAME_RESULT_SEPARATOR + getPositionString(car.getDistance()));
         }
+        System.out.println();
     }
 
     public static String getPositionString(int carDistance) {
