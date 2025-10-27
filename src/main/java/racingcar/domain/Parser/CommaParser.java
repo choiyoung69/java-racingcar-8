@@ -1,9 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.Parser;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CommaParser implements Parser{
+public class CommaParser implements Parser {
     private static final String COMMA_DELIMITER = ",";
 
     @Override

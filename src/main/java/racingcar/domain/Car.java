@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.strategy.MoveStrategy;
+
 public class Car {
     private final String name;
     private int distance;
