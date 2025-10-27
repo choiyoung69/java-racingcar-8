@@ -46,7 +46,7 @@ class CarTest {
 
     @Test
     @DisplayName("자동차 이름이 비어있으면 예외가 발생한다")
-    void createCar_WhenNameIsBlank_ShouldThrowException() {
+    void carName_isEmtpy() {
         assertThatThrownBy(() -> Car.from(" ", 0, new NeverMoveStrategy()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 비어있으면 안됩니다");
@@ -54,7 +54,7 @@ class CarTest {
 
     @Test
     @DisplayName("자동차 이름이 5글자를 초과하면 예외가 발생한다")
-    void createCar_WhenNameIsTooLong_ShouldThrowException() {
+    void carName_isOverThanFive() {
         assertThatThrownBy(() -> Car.from("seoyoung", 0, new NeverMoveStrategy()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 5글자 이하여야 합니다");
@@ -62,7 +62,7 @@ class CarTest {
 
     @Test
     @DisplayName("자동차 이름이 정상일 경우 예외가 발생하지 않는다")
-    void createCar_WhenNameIsValid_ShouldCreateSuccessfully() {
+    void validCarName() {
         assertThatCode(() -> Car.from("pobi",0, new NeverMoveStrategy()))
                 .doesNotThrowAnyException();
     }

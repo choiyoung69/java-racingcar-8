@@ -17,13 +17,6 @@ class GameTest {
         }
     }
 
-    static class NeverMoveStrategy implements MoveStrategy {
-        @Override
-        public boolean isAllowedToAdvance() {
-            return false;
-        }
-    }
-
     @Test
     @DisplayName("시도 횟수가 0 이하이면 예외가 발생한다")
     void createGame_withUnValidNumberOfAttempts() {
@@ -36,7 +29,7 @@ class GameTest {
 
     @Test
     @DisplayName("정상적인 시도 횟수로 생성되면 예외가 발생하지 않는다")
-    void createGame_withValidNumberOfAttepts() {
+    void createGame_withValidNumberOfAttempts() {
         Cars cars = Cars.from(List.of("pobi", "woni"), new AlwaysMoveStrategy());
 
         Game game = Game.from(cars, 5);
