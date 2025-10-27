@@ -8,6 +8,7 @@ import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.RandomMoveStrategy;
 import racingcar.dto.GameRequestDto;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingGameController {
     private Parser parser;
@@ -20,6 +21,7 @@ public class RacingGameController {
         Cars cars = Cars.from(parsedCarNames, RandomMoveStrategy.getInstance());
         Game game = Game.from(cars, gameRequestDto.numberOfAttempts());
 
+        OutputView.printExecutionResultMessage();
         while (game.hasNextRound()) {
             game.playOneRound();
             OutputView.printRound(game.getCars());

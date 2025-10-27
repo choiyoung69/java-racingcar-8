@@ -23,6 +23,10 @@ public class Cars {
         cars.forEach(Car::decideToMove);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     private void validateDuplicate(List<String> carNames) {
         Set<String> nameSet = new HashSet<>(carNames);
         if(carNames.size() != nameSet.size()) {

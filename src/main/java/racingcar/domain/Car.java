@@ -22,6 +22,14 @@ public class Car {
         if(moveStrategy.isAllowedToAdvance()) distance++;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
     private void validateCarNameFormat(String name) {
         if(name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 비어있으면 안됩니다.");
