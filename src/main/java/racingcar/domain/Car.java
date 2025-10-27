@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import static racingcar.util.ValidationUtils.validateNotBlank;
+
 import racingcar.domain.strategy.MoveStrategy;
 
 public class Car {
@@ -12,6 +14,13 @@ public class Car {
         this.name = name;
         this.distance = distance;
         this.moveStrategy = moveStrategy;
+    }
+
+    private void validateCarNameFormat(String name) {
+        validateNotBlank(name, "자동차 이름은 비어있으면 안됩니다.");
+        if(name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다" + name);
+        }
     }
 
     public static Car from(String name, int distance, MoveStrategy moveStrategy){
@@ -28,14 +37,5 @@ public class Car {
 
     public int getDistance() {
         return distance;
-    }
-
-    private void validateCarNameFormat(String name) {
-        if(name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있으면 안됩니다.");
-        }
-        if(name.length() > 5) {
-            throw new IllegalArgumentException("자동차 이름이 5글자 이상입니다" + name);
-        }
     }
 }
