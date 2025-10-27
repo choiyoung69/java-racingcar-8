@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.List;
+
 public class Game {
     private final Cars cars;
     private final int totalRounds;
@@ -27,6 +29,17 @@ public class Game {
 
     public Cars getCars() {
         return cars;
+    }
+
+    public List<Car> getWinner() {
+        int maxDistance = cars.getCars().stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
+
+        return cars.getCars().stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .toList();
     }
 
     private void validatePositiveRounds(int totalRounds) {
