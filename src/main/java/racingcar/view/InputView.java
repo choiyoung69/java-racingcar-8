@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.dto.GameRequestDto;
 
 public class InputView {
     private static final String INPUT_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
@@ -12,6 +13,6 @@ public class InputView {
         System.out.println(INPUT_TOTAL_ROUNDS_MESSAGE);
         String numberOfAttempts = Console.readLine();
 
-        return GameRequestDto(carNames, numberOfAttempts);
+        return GameRequestDto.from(carNames, numberOfAttempts);
     }
 }
