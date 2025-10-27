@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -19,6 +21,13 @@ public class Cars {
     }
 
     public void race() {
+        cars.forEach(Car::decideToMove);
+    }
 
+    private void validateDuplicate(List<String> carNames) {
+        Set<String> nameSet = new HashSet<>(carNames);
+        if(carNames.size() != nameSet.size()) {
+            throw new IllegalArgumentException("자동차 이름이 중복이면 안됩니다.");
+        }
     }
 }
