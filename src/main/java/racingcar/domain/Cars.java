@@ -7,9 +7,12 @@ import racingcar.domain.strategy.MoveStrategy;
 import racingcar.domain.strategy.RandomMoveStrategy;
 
 public class Cars {
+    private static final int MINIMUM_CAR_COUNT = 2;
     private final List<Car> cars;
 
     private Cars(List<String> carNames, MoveStrategy moveStrategy) {
+        validateDuplicate(carNames);
+        validateMinimumCarCount(carNames);
         this.cars = carNames.stream()
                 .map(name -> Car.from(name, 0, moveStrategy))
                 .toList();
@@ -31,6 +34,12 @@ public class Cars {
         Set<String> nameSet = new HashSet<>(carNames);
         if(carNames.size() != nameSet.size()) {
             throw new IllegalArgumentException("자동차 이름이 중복이면 안됩니다.");
+        }
+    }
+
+    private void validateMinimumCarCount(List<String> carNames) {
+        if (carNames.size() < MINIMUM_CAR_COUNT) {
+            throw new IllegalArgumentException("자동차는 최소 2대 이상이어야 합니다.");
         }
     }
 }
