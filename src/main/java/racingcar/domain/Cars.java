@@ -8,6 +8,6 @@ public class Cars {
 
     private Cars(List<String> carNames) {
         carNames.stream()
-                .map(car -> )
+                .map(name -> Car.from(name, 0, new RandomMoveStrategy));
     }
 }
