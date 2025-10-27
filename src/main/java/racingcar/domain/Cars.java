@@ -9,18 +9,17 @@ import racingcar.domain.strategy.RandomMoveStrategy;
 public class Cars {
     private final List<Car> cars;
 
-    private Cars(List<String> carNames) {
-        MoveStrategy moveStrategy = RandomMoveStrategy.getInstance();
+    private Cars(List<String> carNames, MoveStrategy moveStrategy) {
         this.cars = carNames.stream()
                 .map(name -> Car.from(name, 0, moveStrategy))
                 .toList();
     }
 
-    public static Cars from(List<String> carName) {
-        return new Cars(carName);
+    public static Cars from(List<String> carName, MoveStrategy moveStrategy) {
+        return new Cars(carName, moveStrategy);
     }
 
-    public void race() {
+    public void moveAll() {
         cars.forEach(Car::decideToMove);
     }
 
