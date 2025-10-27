@@ -17,18 +17,32 @@ public class RacingGameController {
     }
 
     public void gameStart() {
-        GameRequestDto gameRequestDto = InputView.readGameRequest();
-
-        List<String> parsedCarNames = parser.parse(gameRequestDto.carNames());
-        Cars cars = Cars.from(parsedCarNames, RandomMoveStrategy.getInstance());
-        Game game = Game.from(cars, gameRequestDto.numberOfAttempts());
+        GameRequestDto gameRequestDto = getGameRequest();
+        Game game = initializeGame(gameRequestDto);
 
         OutputView.printExecutionResultMessage();
+        playGame(game);
+        printWinner(game);
+    }
+
+    private GameRequestDto getGameRequest() {
+        return InputView.readGameRequest();
+    }
+
+    private Game initializeGame(GameRequestDto request) {
+        List<String> carNames = parser.parse(request.carNames());
+        Cars cars = Cars.from(carNames, RandomMoveStrategy.getInstance());
+        return Game.from(cars, request.numberOfAttempts());
+    }
+
+    private void playGame(Game game) {
         while (game.hasNextRound()) {
             game.playOneRound();
             OutputView.printRound(game.getCars());
         }
+    }
 
+    private void printWinner(Game game) {
         OutputView.printWinner(game.getWinner());
     }
 }

@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import racingcar.domain.strategy.MoveStrategy;
-import racingcar.domain.strategy.RandomMoveStrategy;
 
 public class Cars {
     private static final int MINIMUM_CAR_COUNT = 2;

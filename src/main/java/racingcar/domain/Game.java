@@ -18,6 +18,16 @@ public class Game {
         return new Game(cars, totalRounds);
     }
 
+    public Cars getCars() {
+        return cars;
+    }
+
+    private void validatePositiveRounds(int totalRounds) {
+        if(totalRounds <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상이여야 합니다.");
+        }
+    }
+
     public void playOneRound() {
         cars.moveAll();
         currentRound++;
@@ -25,10 +35,6 @@ public class Game {
 
     public boolean hasNextRound() {
         return currentRound < totalRounds;
-    }
-
-    public Cars getCars() {
-        return cars;
     }
 
     public List<Car> getWinner() {
@@ -40,11 +46,5 @@ public class Game {
         return cars.getCars().stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .toList();
-    }
-
-    private void validatePositiveRounds(int totalRounds) {
-        if(totalRounds <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이여야 합니다.");
-        }
     }
 }
