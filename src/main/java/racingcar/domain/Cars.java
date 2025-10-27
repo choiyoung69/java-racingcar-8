@@ -2,12 +2,23 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
-    List<Car> cars = new ArrayList<>();
+    private final List<Car> cars;
 
     private Cars(List<String> carNames) {
-        carNames.stream()
-                .map(name -> Car.from(name, 0, new RandomMoveStrategy));
+        MoveStrategy moveStrategy = RandomMoveStrategy.getInstance();
+        this.cars = carNames.stream()
+                .map(name -> Car.from(name, 0, moveStrategy))
+                .toList();
+    }
+
+    public static Cars from(List<String> carName) {
+        return new Cars(carName);
+    }
+
+    public void race() {
+
     }
 }
